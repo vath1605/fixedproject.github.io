@@ -17,6 +17,9 @@
     <link id="pagestyle" href="assets/css/material-dashboard.min.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
