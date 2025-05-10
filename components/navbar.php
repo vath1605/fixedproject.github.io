@@ -20,7 +20,7 @@
                         More
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Sign In</a></li>
+                        <li><a class="dropdown-item" href="login.php">Sign In</a></li>
                         <li><a class="dropdown-item" href="#">Contact Us</a></li>
                         <li><a class="dropdown-item" href="#">Order</a></li>
                     </ul>
