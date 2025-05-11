@@ -17,7 +17,7 @@ include("./components/header.php") ?>
             <h4>Log In Form</h4>
         </div>
         <div class="card-body py-5">
-        <form method="get" action="./controller/authController.php" class="px-5">
+        <form method="post" action="./controller/authController.php" class="px-5">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <div class="container px-4"><input type="email" name="email" placeholder="Email Address" class="form-control shadow-none border-dark border-0 border-bottom rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp">

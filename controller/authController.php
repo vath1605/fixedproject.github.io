@@ -16,7 +16,7 @@ if (isset($_GET['subBtn'])) {
     if (mysqli_num_rows($email_validate_run) > 0) {
         $_SESSION['msg'] = "The email is already exist.";
         header('location: ../register.php');
-    }
+    } 
     $phone_validate_query = "SELECT uPhone FROM users WHERE uPhone = '$phone' ";
     $phone_validate_run = mysqli_query($conn, $phone_validate_query);
     if (mysqli_num_rows($phone_validate_run) > 0) {
@@ -37,5 +37,25 @@ if (isset($_GET['subBtn'])) {
     } else {
         $_SESSION['msg'] = "Password Not Matched";
         header('location: ../register.php');
+    }
+}else if(isset($_POST['logBtn'])){
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $query_select = "SELECT  * FROM users WHERE uEmail = '$email' AND uPass = '$password' ";
+    $query_select_run = mysqli_query($conn,$query_select);
+    if(mysqli_num_rows($query_select_run)>0){
+        $_SESSION['auth'] = true;
+        $userdata = mysqli_fetch_array($query_select_run);
+        $username = $userdata['uName'];
+        $useremail = $userdata['uEmail'];
+        $_SESSION['auth-user']=[
+            'name' => $username,
+            'email' => $useremail
+        ];
+        $_SESSION['msg']="Logged in successfully.";
+        header('location: ../index.php');
+    }else{
+        $_SESSION['msg']="Invalid Credential";
+        header('location: ../login.php');
     }
 }

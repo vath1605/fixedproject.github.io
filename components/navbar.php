@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">Logo</a>
@@ -12,19 +13,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
-                </li>
+                <?php if($_SESSION['auth']){ ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        More
+                        <?php echo $_SESSION['auth-user']['name']?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="login.php">Sign In</a></li>
-                        <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                        <li><a class="dropdown-item" href="#">Order</a></li>
+                        <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                        <li><a class="dropdown-item" href="#">Other</a></li>
                     </ul>
                 </li>
+                <?php } else{ ?>
+                    <li class="nav-item">
+                        <li class="nav-item">
+                        <a class="nav-link" href="register.php">Register</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="login.php">Sign In</a>
+                        </li>
+                    </li>
+            <?php } ?>
             </ul>
         </div>
     </div>
