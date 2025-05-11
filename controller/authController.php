@@ -48,14 +48,18 @@ if (isset($_GET['subBtn'])) {
         $userdata = mysqli_fetch_array($query_select_run);
         $username = $userdata['uName'];
         $useremail = $userdata['uEmail'];
+        $role_as = $userdata['role_as'];
         $_SESSION['auth-user']=[
             'name' => $username,
             'email' => $useremail
         ];
+        $_SESSION['role_as']=$role_as;
         $_SESSION['msg']="Logged in successfully.";
+        $_SESSION['msgType']="alert-success";
         header('location: ../index.php');
     }else{
         $_SESSION['msg']="Invalid Credential";
+        $_SESSION['msgType']="alert-danger";
         header('location: ../login.php');
     }
 }

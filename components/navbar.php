@@ -20,7 +20,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="login.php">Sign In</a></li>
-                        <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                        <li><a class="dropdown-item" href="signout.php">Sign Out</a></li>
                         <li><a class="dropdown-item" href="#">Other</a></li>
                     </ul>
                 </li>
