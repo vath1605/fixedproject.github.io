@@ -1,5 +1,4 @@
 <?php include('./components/header.php'); 
-session_start();
 ?>
 <?php 
         if(isset($_SESSION['msg'])){
@@ -10,5 +9,6 @@ session_start();
         </div>
     <?php } 
         unset($_SESSION['msg']);
+        unset($_SESSION['msgType']);
     ?>
 <?php include('./components/footer.php') ?>

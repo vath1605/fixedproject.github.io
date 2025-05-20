@@ -1,6 +1,7 @@
 <?php
-include("../model/db.php");
 session_start();
+include("../controller/redirect.php");
+include("../model/db.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -16,7 +17,7 @@ if (isset($_GET['subBtn'])) {
     if (mysqli_num_rows($email_validate_run) > 0) {
         $_SESSION['msg'] = "The email is already exist.";
         header('location: ../register.php');
-    } 
+    }
     $phone_validate_query = "SELECT uPhone FROM users WHERE uPhone = '$phone' ";
     $phone_validate_run = mysqli_query($conn, $phone_validate_query);
     if (mysqli_num_rows($phone_validate_run) > 0) {
@@ -38,28 +39,34 @@ if (isset($_GET['subBtn'])) {
         $_SESSION['msg'] = "Password Not Matched";
         header('location: ../register.php');
     }
-}else if(isset($_POST['logBtn'])){
+} else if (isset($_POST['logBtn'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $query_select = "SELECT  * FROM users WHERE uEmail = '$email' AND uPass = '$password' ";
-    $query_select_run = mysqli_query($conn,$query_select);
-    if(mysqli_num_rows($query_select_run)>0){
+    $query_select_run = mysqli_query($conn, $query_select);
+    if (mysqli_num_rows($query_select_run) > 0) {
         $_SESSION['auth'] = true;
         $userdata = mysqli_fetch_array($query_select_run);
         $username = $userdata['uName'];
         $useremail = $userdata['uEmail'];
         $role_as = $userdata['role_as'];
-        $_SESSION['auth-user']=[
+        $_SESSION['auth-user'] = [
             'name' => $username,
             'email' => $useremail
         ];
-        $_SESSION['role_as']=$role_as;
-        $_SESSION['msg']="Logged in successfully.";
-        $_SESSION['msgType']="alert-success";
-        header('location: ../index.php');
-    }else{
-        $_SESSION['msg']="Invalid Credential";
-        $_SESSION['msgType']="alert-danger";
+        $_SESSION['role_as'] = $role_as;
+        if ($role_as == 1) {
+            $_SESSION['msg'] = "Welcome Back To Admin Dashboard.";
+            $_SESSION['msgType'] = "alert-success";
+            header('location: ../Admin/');
+        } else {
+            $_SESSION['msg'] = "Logged in successfully.";
+            $_SESSION['msgType'] = "alert-success";
+            header('location: ../index.php');
+        }
+    } else {
+        $_SESSION['msg'] = "Invalid Credential";
+        $_SESSION['msgType'] = "alert-danger";
         header('location: ../login.php');
     }
 }

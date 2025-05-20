@@ -1,19 +1,23 @@
-    <?php include('includes/header.php');
-    unset($_SESSION['msg']);
-    include('../middleware/adminMiddleware.php'); ?>
+<?php
+session_start();
+include('../controller/redirect.php');
+include('../middleware/adminMiddleware.php')
+?>
+<?php include("./includes/header.php");?>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div clas s="col-md-12">
               <?php 
-              if(isset($_SESSION['msg'])){
+        if(isset($_SESSION['msg'])){
     ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Dear <?php echo $_SESSION['auth-user']['name'] ?>!</strong> <?= $_SESSION['msg']; ?>
+        <div class="alert <?= $_SESSION['msgType'] ?> alert-dismissible fade show" role="alert">
+            <strong>Dear <?= $_SESSION['auth-user']['name'] ?>!</strong> <?= $_SESSION['msg']; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php } 
-    unset($_SESSION['msg']);
-              ?>
+        unset($_SESSION['msg']);
+        unset($_SESSION['msgType']);
+    ?>
             <div class="row">
         <div >
         </div>
