@@ -32,15 +32,15 @@ if(isset($_POST['add-btn'])){
             '$meta_description',
             '$meta_keyword'
         )";
-
-    // Execute query
     $cate_query_run = mysqli_query($conn, $cate_query); 
 
     if($cate_query_run){
         move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$file_name);
-        reDirect("../Admin/add.php", "Adding Successfully.", "alert-success");
+        $_SESSION['msg']="Product Insert Success.";
+        header('location: ../Admin/add.php');
     } else {
-        reDirect("../Admin/add.php", "Something went wrong, try again. Error: " . mysqli_error($conn), "alert-danger");
+        $_SESSION['msg']="Product Insert Error: "+mysqli_error($conn);
+        header('location: ../Admin/add.php');
     }
 }
 ?>

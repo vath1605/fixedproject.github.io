@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <footer class="footer pt-5">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-lg-between">
@@ -24,8 +25,15 @@
 </footer>
 </main>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/perfect-scrollbar.min.js"></script>
-<script src="../assets/js/smooth-scrollbar.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+<script>
+        <?php if(isset($_SESSION['msg'])){?>
+    alertify.set('notifier', 'position', 'bottom-right');
+    alertify.success('<?= $_SESSION['msg']; ?>');
+<?php }
+    unset($_SESSION['msg']);
+?>
+</script>
 </body>
 
 </html>

@@ -27,6 +27,7 @@ if (isset($_GET['subBtn'])) {
         $query_run = mysqli_query($conn, $query);
         if ($query_run) {
             $_SESSION['msg'] = "User Registered Successfully";
+            $_SESSION['msgType']="alert-success";
             header('location: ../login.php');
         } else {
             $_SESSION['msg'] = "User Registration Failed";
