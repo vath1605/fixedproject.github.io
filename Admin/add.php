@@ -1,6 +1,6 @@
     <?php include('includes/header.php'); ?>
     <div class="container-fluid">
-        <div class="row px-5">
+        <div class="row px-4">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
                     <h2>Add-Product</h2>
@@ -34,7 +34,6 @@
                                         <input type="checkbox" class="form-check border" name="popular" id="popular">
                                         <label class="form-label mb-1" for="popular">Popular</label>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div class="col-12 my-2">
@@ -53,7 +52,7 @@
                     </div>
                     <div class="card-footer float-end">
                         <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" name="add-btn" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>

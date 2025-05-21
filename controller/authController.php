@@ -2,9 +2,6 @@
 session_start();
 include("../controller/redirect.php");
 include("../model/db.php");
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 if (isset($_GET['subBtn'])) {
     $name = mysqli_real_escape_string($conn, $_GET['userName']);
     $email = mysqli_real_escape_string($conn, $_GET['email']);
