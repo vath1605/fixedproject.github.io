@@ -1,12 +1,12 @@
 <?php
 session_start();
-include('../controller/redirect.php');
+include('../func/redirect.php');
 include('../middleware/adminMiddleware.php')
 ?>
 <?php include("./includes/header.php");?>
     <div class="container-fluid">
         <div class="row">
-            <div clas s="col-md-12">
+            <div class="col-md-12">
               <?php 
         if(isset($_SESSION['msg'])){
     ?>

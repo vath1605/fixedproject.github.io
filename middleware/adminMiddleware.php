@@ -1,5 +1,5 @@
 <?php
-include('./controller/redirect.php');
+include('../func/redirect.php');
 if (!isset($_SESSION['auth'])) {
     reDirect('../login.php', 'Please log in first.', 'alert-warning');
     exit;

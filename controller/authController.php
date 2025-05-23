@@ -8,7 +8,6 @@ if (isset($_GET['subBtn'])) {
     $phone = mysqli_real_escape_string($conn, $_GET['phoneNumber']);
     $password = mysqli_real_escape_string($conn, $_GET['password']);
     $cpassword = mysqli_real_escape_string($conn, $_GET['conpassword']);
-
     $email_validate_query = "SELECT uEmail FROM users WHERE uEmail = '$email' ";
     $email_validate_run = mysqli_query($conn, $email_validate_query);
     if (mysqli_num_rows($email_validate_run) > 0) {
