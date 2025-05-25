@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white " href="./add.php">
+                <a class="nav-link text-white " href="./add-cate.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">table_view</i>
                     </div>
@@ -30,6 +30,22 @@
                         <i class="material-icons opacity-10">category</i>
                     </div>
                     <span class="nav-link-text ms-1">Category List</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white " href="./add-pro.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">add</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Add Product</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white " href="./products.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">list</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Product List</span>
                 </a>
             </li>
         </ul>
