@@ -5,7 +5,7 @@
         <div class="row px-4">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h2>Categories List</h2>
+                    <h2>Product List</h2>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-striped align-middle">
@@ -29,8 +29,8 @@
                                         <td><?= $item['id']; ?></td>
                                         <td><?= $item['name']; ?></td>
                                         <td><img style="width: 50px; object-fit: cover; height:50px; padding: 1px;" class="rounded-circle border <?= $item['status'] == '1' ? "border-success" : "border-danger"; ?> shadow-blur shadow" src="../uploads/<?= $item['image']; ?>" alt=" <?= $item['name']; ?>"></td>
-                                        <td>
-                                            <div style="font-size: 11px;" class="py-1 text-center text-light fw-bold w-25 rounded-pill <?= $item['status'] == '1' ? "bg-success" : "bg-secondary"; ?>"><?= $item['status'] == '1' ? "Visible" : "Hidden"; ?></div>
+                                        <td class="px-4">
+                                            <div style="font-size: 11px;" class="py-1 text-center text-light fw-bold w-50 rounded-pill <?= $item['status'] == '1' ? "bg-success" : "bg-secondary"; ?>"><?= $item['status'] == '1' ? "Visible" : "Hidden"; ?></div>
                                         </td>
                                         <td><?= $item['create_at']; ?></td>
                                         <td>

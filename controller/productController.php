@@ -163,4 +163,22 @@ if (isset($_POST['add-btn'])) {
         $_SESSION['msg'] = "Please Fill Out The Fields.";
             header('location: ../Admin/add-pro.php');
     }
+} else if (isset($_POST['btn-delete-pro'])) {
+    include('../func/getProduct.php');
+    $del_id = $_POST['del_id'];
+    $product = getById('products',$del_id);
+    $data = mysqli_fetch_assoc($product);
+    $img = $data['image'];
+    $query_delete = "DELETE FROM products WHERE id='$del_id'";
+    $query_delete_run = mysqli_query($conn,$query_delete);
+    if($query_delete_run){
+        if (file_exists("../uploads/" . $img)) {
+            unlink("../uploads/" . $img);
+        }
+        header('location: ../Admin/products.php');
+        $_SESSION['msg']="Product Delete Successfully.";
+    }else{
+        header('location: ../Admin/products.php');
+        $_SESSION['msg']="Something gone wrong.";
+    }
 }
