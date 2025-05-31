@@ -19,10 +19,10 @@
                                     if (mysqli_num_rows($categories) > 0) {
                                         foreach ($categories as $data) {
                                     ?>
-                                        <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
+                                            <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
                                     <?php
                                         }
-                                    }else{
+                                    } else {
                                         echo "No Category Available";
                                     }
                                     ?>

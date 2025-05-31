@@ -181,4 +181,56 @@ if (isset($_POST['add-btn'])) {
         header('location: ../Admin/products.php');
         $_SESSION['msg']="Something gone wrong.";
     }
+} else if (isset($_POST['update-btn-pro'])){
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
+    $cate_id = mysqli_real_escape_string($conn, $_POST['cate-id']);
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $slug = mysqli_real_escape_string($conn, $_POST['slugname']);
+    $oprice = mysqli_real_escape_string($conn, $_POST['oprice']);
+    $sprice = mysqli_real_escape_string($conn, $_POST['sprice']);
+    $qty = mysqli_real_escape_string($conn, $_POST['qty']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $small_description = mysqli_real_escape_string($conn, $_POST['small_description']);
+    $meta_title = mysqli_real_escape_string($conn, $_POST['meta_title']);
+    $meta_description = mysqli_real_escape_string($conn, $_POST['meta_description']);
+    $meta_keyword = mysqli_real_escape_string($conn, $_POST['meta_keyword']);
+    $status = isset($_POST['status']) ? '1' : '0';
+    $trend = isset($_POST['trend']) ? '1' : '0';
+    $old_image = mysqli_real_escape_string($conn, $_POST['old_image']);
+    $new_image = $_FILES['new_image']['name'];
+
+    if ($new_image != "") {
+        $file_ext = pathinfo($new_image, PATHINFO_EXTENSION);
+        $update_file = time() . '.' . $file_ext;
+    } else {
+        $update_file = $old_image;
+    }
+    $path = "../uploads";
+    $update_query = "UPDATE products SET 
+    category_id='$cate_id',
+    name='$name',
+    slug='$slug',
+    small_description='$small_description',
+    description='$description',
+    original_price='$oprice',
+    selling_price='$sprice',
+    image='$update_file',
+    qty='$qty',
+    status='$status',
+    trending='$trend',
+    meta_title='$meta_title',
+    meta_keywords='$meta_keyword',
+    meta_description='$meta_description'
+    WHERE id = '$id'
+    ";
+    $update_query_run = mysqli_query($conn, $update_query);
+    if ($update_query_run) {
+        if ($_FILES['new_image']['name'] != "") {
+            move_uploaded_file($_FILES['new_image']['tmp_name'], $path . '/' . $update_file);
+            if (file_exists("../uploads/" . $old_image)) {
+                unlink("../uploads/" . $old_image);
+            }
+        }
+        reDirect("../Admin/products.php", "Product Updated Successfully.", "alert-success");
+    }
 }
