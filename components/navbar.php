@@ -1,17 +1,20 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    $page=substr($_SERVER['SCRIPT_NAME'],strrpos($_SERVER['SCRIPT_NAME'],'/')+1);
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Logo</a>
+        <a class="navbar-brand" href="index.php">V-Commerce</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link rounded-3 <?= $page == 'index.php'? "active bg-light text-dark fw-bold":"" ?>" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link rounded-3 <?= $page == 'category.php'? "active bg-light text-dark fw-bold":"" ?>" href="category.php">Category</a>
                 </li>
                 <?php if($_SESSION['auth']){ ?>
                 <li class="nav-item dropdown">
