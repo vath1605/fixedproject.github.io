@@ -20,16 +20,16 @@ include('./func/getProduct.php');
         if (mysqli_num_rows($categories)) {
             foreach ($categories as $item) {
         ?>
-                <a class="text-decoration-none" href="product.php?category=<?= $item['slug'] ?>">
                     <div class="col-3">
+                        <a class="text-decoration-none" href="product.php?category=<?= $item['slug'] ?>">
                     <div class="card shadow shadow-blur">
                         <div class="card-body">
-                            <img class="w-100 card-img object-fit-cover" style="height: 25vh;" src="./uploads/<?= $item['image'] ?>" alt="">
+                            <img class="w-100" style="height: 25vh; object-fit: cover;" src="./uploads/<?= $item['image'] ?>" alt="">
                             <h4 class="fw-bold text-center mt-3 text-decoration-none text-dark"><?= $item['name'] ?></h4>
                         </div>
                     </div>
-                </div>
                 </a>
+                </div>
             <?php
             }
         } else { ?>
