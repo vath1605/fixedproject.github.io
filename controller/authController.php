@@ -46,8 +46,10 @@ if (isset($_GET['subBtn'])) {
         $userdata = mysqli_fetch_array($query_select_run);
         $username = $userdata['uName'];
         $useremail = $userdata['uEmail'];
+        $user_id = $userdata['uId'];
         $role_as = $userdata['role_as'];
         $_SESSION['auth-user'] = [
+            'user-id' => $user_id,
             'name' => $username,
             'email' => $useremail
         ];
