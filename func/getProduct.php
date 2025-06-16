@@ -36,4 +36,12 @@
         $query = "SELECT * FROM $table WHERE status = '1' ";
         return mysqli_query($conn,$query);
     }
+    function getCartItem(){
+        global $conn;
+        $userId = $_SESSION['auth-user']['user-id'];
+        $query = "SELECT c.id as cid, c.pro_qty, p.id as pid, p.name, p.image, p.selling_price
+            FROM carts c, products p WHERE c.pro_id = p.id AND c.user_id = '$userId' ORDER BY c.id DESC ";
+            $query_run =  mysqli_query($conn,$query);
+        return $query_run;
+    }
 ?>
