@@ -44,4 +44,10 @@
             $query_run =  mysqli_query($conn,$query);
         return $query_run;
     }
+    function getOrder(){
+        global $conn;
+        $userId = $_SESSION['auth-user']['user-id'];
+        $query = "SELECT * FROM orders WHERE user_id = '$userId'";
+        return mysqli_query($conn,$query);
+    }
 ?>

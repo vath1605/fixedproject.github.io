@@ -30,7 +30,7 @@ $pro = mysqli_fetch_array($pro_data);
         <div class="col-5">
             <div class="card">
                 <div class="card-body">
-                    <img class="w-100" style="height: 70vh; object-fit: cover;" src="./uploads/<?= $pro['image'] ?>" alt="">
+                    <img class="w-100" style="height: 45vh; object-fit: cover;" src="./uploads/<?= $pro['image'] ?>" alt="">
                 </div>
             </div>
         </div>
@@ -52,7 +52,17 @@ $pro = mysqli_fetch_array($pro_data);
             </div>
             <div class="row">
                 <div class="col-3">
-                    <span class="fw-bold border-dark border px-3 py-1">Instock: <?= $pro['qty'] ?></span>
+                    <?php 
+                        if($pro['qty'] != 0){
+                            ?>
+                            <span class="fw-bold border-dark border px-3 py-1">Instock: <?= $pro['qty'] ?></span>
+                            <?php 
+                        }else{
+                            ?>
+                            <span class="fw-bold border-secondary text-secondary border px-3 py-1">Out of Stock</span>
+                            <?php
+                        }
+                    ?>
                 </div>
                 <div class="col-9">
                     <?php
@@ -87,14 +97,20 @@ $pro = mysqli_fetch_array($pro_data);
                         </h1>
                     </div>
                     <div class="col-6">
-                        <span class="text-secondary">
-                            Order Product Quantity
-                        </span>
-                        <select class="form-select shadow-none" id="order_qty">
-                            <?php for ($i = 1; $i <= $pro['qty']; $i++) { ?>
-                                <option value="<?= $i ?>"><?= $i ?> pcs</option>
-                            <?php } ?>
-                        </select>
+                        <?php
+                        if ($pro['qty']!=0) {
+                        ?>
+                            <span class="text-secondary">
+                                Order Product Quantity
+                            </span>
+                            <select class="form-select shadow-none" id="order_qty">
+                                <?php for ($i = 1; $i <= $pro['qty']; $i++) { ?>
+                                    <option value="<?= $i ?>"><?= $i ?> pcs</option>
+                                <?php } ?>
+                            </select>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             <?php } else { ?>
@@ -108,14 +124,20 @@ $pro = mysqli_fetch_array($pro_data);
                         </h1>
                     </div>
                     <div class="col-6">
-                        <span class="text-secondary">
-                            Order Product Quantity
-                        </span>
-                        <select class="form-select shadow-none" id="order_qty">
-                            <?php for ($i = 1; $i <= $pro['qty']; $i++) { ?>
-                                <option value="<?= $i ?>"><?= $i ?> pcs</option>
-                            <?php } ?>
-                        </select>
+                        <?php
+                        if ($pro['qty']!=0) {
+                        ?>
+                            <span class="text-secondary">
+                                Order Product Quantity
+                            </span>
+                            <select class="form-select shadow-none" id="order_qty">
+                                <?php for ($i = 1; $i <= $pro['qty']; $i++) { ?>
+                                    <option value="<?= $i ?>"><?= $i ?> pcs</option>
+                                <?php } ?>
+                            </select>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             <?php } ?>
@@ -168,13 +190,20 @@ $pro = mysqli_fetch_array($pro_data);
                                 footer: '<a class="nav-link" href="./login.php">Log In</a>'
                             });
                         } else if (response == 168) {
-                            window.location.reload();
+                            Swal.fire({
+                                title: "Product Added To Cart",
+                                icon: "success",
+                                draggable: false
+                            }).then(()=>{
+                                location.reload();
+                            });
                         } else if (response == 102) {
                             Swal.fire({
                                 title: "Product Already Added To Cart",
                                 icon: "warning",
                                 draggable: true
                             });
+
                         }
                     }
                 })
